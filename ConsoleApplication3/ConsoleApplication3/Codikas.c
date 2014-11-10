@@ -67,6 +67,11 @@ int main()
 	int hit2bit=0;
 	int miss2bit=0;
 	int changecounter2=0;
+	int correlated_change=1;
+	int correlatedT=1;
+	int correlatedNT=1;
+	int correlatedpredictorT_hit=0;
+	int correlatedpredictorNT_hit=0;
 	input_file=fopen("input.txt","r");
 	output_file=fopen("exodos.txt","w");
 
@@ -151,6 +156,46 @@ int main()
 			changecounter2=0;
 			}
 
+
+			fprintf(output_file,"Action Not Taken\n");
+			if (correlatedT==1){
+			fprintf(output_file,"Predictor Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			}
+
+				if (correlatedNT==1){
+			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			}
+
+
+			
+			if (correlated_change==1){
+				if (correlatedT==1){/////Miss
+				correlatedT=0;
+				correlated_change=0;
+				}
+				else if (correlatedT==0){ correlatedpredictorT_hit++;/// Hit 
+					correlatedT=1;
+					correlated_change=0;
+				}
+			}else if (correlated_change==0){
+				if (correlatedNT==1){/////Miss
+				correlatedNT=0;
+				correlated_change=0;
+				}
+				else if (correlatedNT==0){ correlatedpredictorNT_hit++;/// Hit
+					correlatedNT=1;
+					correlated_change=0;
+				}
+			
+			}
+
+
 			//printf("Not Taken\n");
 			elegxos=2;
 				}
@@ -184,6 +229,44 @@ int main()
 			changecounter2=0;
 			}
 			
+
+			fprintf(output_file,"\nAction Taken\n");
+			if (correlatedT==1){
+			fprintf(output_file,"Predictor Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			}
+
+				if (correlatedNT==1){
+			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			}
+
+				if (correlated_change==1){
+				if (correlatedT==0){/////Miss
+				correlatedT=0;
+				correlated_change=1;
+				}
+				else if (correlatedT==1){correlatedpredictorT_hit++;/// Hit
+					correlatedT=1;
+					correlated_change=1;
+				}
+			}else if (correlated_change==0){
+				if (correlatedNT==0){/////Miss
+				correlatedNT=0;
+				correlated_change=1;
+				}
+				else if (correlatedNT==1){correlatedpredictorNT_hit++;/// Hit
+					correlatedNT=1;
+					correlated_change=1;
+				}
+			
+			}
+
+
 			//printf("Taken\n");
 			counterouter++;
 			}
@@ -229,6 +312,46 @@ int main()
 			}
 
 
+			fprintf(output_file,"\nAction Taken\n");
+			if (correlatedT==1){
+			fprintf(output_file,"Predictor Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			}
+
+				if (correlatedNT==1){
+			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			}
+
+
+
+			if (correlated_change==1){
+				if (correlatedT==0){/////Miss
+				correlatedT=0;
+				correlated_change=1;
+				}
+				else if (correlatedT==1){correlatedpredictorT_hit++;/// Hit
+					correlatedT=1;
+					correlated_change=1;
+				}
+			}else if (correlated_change==0){
+				if (correlatedNT==0){/////Miss
+				correlatedNT=0;
+				correlated_change=1;
+				}
+				else if (correlatedNT==1){correlatedpredictorNT_hit++;/// Hit
+					correlatedNT=1;
+					correlated_change=1;
+				}
+			
+			}
+
+
+
 			//printf("Taken\n");
 		    counterouter++;
 		    
@@ -260,6 +383,45 @@ int main()
 			else if ((changecounter2==2)&&(sinthiki2bit==0)){
 			sinthiki2bit=1;
 			changecounter2=0;
+			}
+
+
+
+			fprintf(output_file,"\nAction Taken\n");
+			if (correlatedT==1){
+			fprintf(output_file,"Predictor Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			}
+
+				if (correlatedNT==1){
+			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			}
+
+
+			if (correlated_change==1){
+				if (correlatedT==0){/////Miss
+				correlatedT=0;
+				correlated_change=1;
+				}
+				else if (correlatedT==1){correlatedpredictorT_hit++;/// Hit
+					correlatedT=1;
+					correlated_change=1;
+				}
+			}else if (correlated_change==0){
+				if (correlatedNT==0){/////Miss
+				correlatedNT=0;
+				correlated_change=1;
+				}
+				else if (correlatedNT==1){correlatedpredictorNT_hit++;/// Hit
+					correlatedNT=1;
+					correlated_change=1;
+				}
+			
 			}
 
 
@@ -304,6 +466,46 @@ int main()
 			changecounter2=0;
 			}
 
+
+			fprintf(output_file,"\nAction Not Taken\n");
+			if (correlatedT==1){
+			fprintf(output_file,"Predictor Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			}
+
+				if (correlatedNT==1){
+			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			} 
+			else {
+			fprintf(output_file,"Predictor Not Taken: Not Taken\n");
+			}
+
+
+
+
+				if (correlated_change==1){
+				if (correlatedT==1){/////Miss
+				correlatedT=0;
+				correlated_change=0;
+				}
+				else if (correlatedT==0){correlatedpredictorT_hit++;/// Hit
+					correlatedT=1;
+					correlated_change=0;
+				}
+			}else if (correlated_change==0){
+				if (correlatedNT==1){/////Miss
+				correlatedNT=0;
+				correlated_change=0;
+				}
+				else if (correlatedNT==0){correlatedpredictorNT_hit++;/// Hit
+					correlatedNT=1;
+					correlated_change=0;
+				}
+			
+			}
+
 		//printf("Not Taken\n");
 		elegxos=2;
 		}
@@ -332,10 +534,20 @@ int main()
 	printf("\nhit2bit are %d\n",hit2bit);
 	printf("misse2bit are %d\n",miss2bit);
 	printf("\nNumber of loops:%d\n\n",counterouter+innercounter);
-	
-	fprintf(output_file,"correctness of 1-bit predictor = %d/%d\n",hit,miss+hit);
+	printf("Predictor Taken Hits: %d\n",correlatedpredictorT_hit);
+	printf("Predictor Not Taken Hits: %d\n",correlatedpredictorNT_hit);
+	printf("Correlated Predictor Hits: %d\n",correlatedpredictorNT_hit+correlatedpredictorT_hit);
+
+
+
+
+
+	fprintf(output_file,"\ncorrectness of 1-bit predictor = %d/%d\n",hit,miss+hit);
 	fprintf(output_file,"\ncorrectness of 2-bit predictor = %d/%d\n",hit2bit,miss2bit+hit2bit);
 	fprintf(output_file,"\nNumber of loops:%d\n",counterouter+innercounter); 
+	fprintf(output_file,"\nPredictor Taken Hits: %d\n",correlatedpredictorT_hit);
+	fprintf(output_file,"Predictor Not Taken Hits: %d\n",correlatedpredictorNT_hit);
+	fprintf(output_file,"Correlated Predictor Hits: %d\n",correlatedpredictorNT_hit+correlatedpredictorT_hit);
 	
 
 	

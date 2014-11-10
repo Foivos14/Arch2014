@@ -1,5 +1,33 @@
-correctness of 1-bit predictor = 1/13
+Action Not Taken
+Predictor Taken: Taken
+Predictor Not Taken: Taken
 
-correctness of 2-bit predictor = 9/13
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
 
-Number of loops:11
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Not Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+correctness of 1-bit predictor = 1/6
+
+correctness of 2-bit predictor = 4/6
+
+Number of loops:4
+
+Predictor Taken Hits: 1
+Predictor Not Taken Hits: 1
+Correlated Predictor Hits: 2
