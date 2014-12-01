@@ -1,0 +1,5 @@
+correctness of 1-bit predictor = 6/30
+
+correctness of 2-bit predictor = 18/30
+
+Number of loops:23

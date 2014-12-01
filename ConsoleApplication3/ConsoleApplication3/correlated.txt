@@ -1,0 +1,138 @@
+Action Not Taken
+Predictor Taken: Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Not Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Not Taken
+Predictor Taken: Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Not Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Not Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Not Taken
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+
+
+Action Not Taken
+Predictor Taken: Taken
+Predictor Not Taken: Not Taken
+
+Action Not Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Not Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+Action Taken
+Predictor Taken: Not Taken
+Predictor Not Taken: Taken
+
+correctness of Taken Predictor: 6/23
+correctness of  Not Taken Predictor: 3/7

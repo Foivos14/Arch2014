@@ -5,8 +5,95 @@
 #define taken 1;
 #define not_taken 0;
 
+FILE *yeehpatt_predictor;
 
- int Arrayelegxos(char,char);
+int number[5]={0,0,0,0,0};
+
+int Yeeh_Patt[32][3]={{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0},{3,0,0}};
+
+void Print_YeehPatt();
+
+void Print_YeehPatt()
+{
+
+ int value1;
+ int value2;
+
+ fprintf(yeehpatt_predictor,"Current State|Number of hits|Number of misses|\n");
+ for(value1=0;   value1<32;    value1++)
+ { 
+  fprintf(yeehpatt_predictor,"___________________________________________\n");
+  fprintf(yeehpatt_predictor,"     %d       /",Yeeh_Patt[value1][0]);
+
+  for(value2=1;  value2<3;     value2++)
+  {
+   fprintf(yeehpatt_predictor,"       %d      /",Yeeh_Patt[value1][value2]);
+  }
+  fprintf(yeehpatt_predictor,"\n");
+ }
+ fprintf(yeehpatt_predictor,"\n0 : NT'\n");
+ fprintf(yeehpatt_predictor,"1 : NT   \n");
+ fprintf(yeehpatt_predictor,"2 : T    \n");
+ fprintf(yeehpatt_predictor,"3 : T'     ");
+}
+
+void yeh_pattt(int);
+
+void yeh_pattt(int arrays)
+{
+int metavliti=0;
+
+int athroisma=0;
+	athroisma = pow(2.0,0)*number[0];
+
+	athroisma = athroisma +  pow(2.0,1)*number[1];
+	athroisma=  athroisma +  pow(2.0,2)*number[2];
+	athroisma=  athroisma +  pow(2.0,3)*number[3];
+	athroisma=  athroisma +  pow(2.0,4)*number[4];
+
+metavliti=Yeeh_Patt[athroisma][0];
+
+
+if(arrays==1)
+{
+
+Yeeh_Patt[athroisma][1]=Yeeh_Patt[athroisma][1]+1;
+       switch(metavliti)
+       {
+
+
+		case 3: Yeeh_Patt[athroisma][0]=3;
+
+		case 2: Yeeh_Patt[athroisma][0]=3;
+		
+		case 1: Yeeh_Patt[athroisma][0]=2;
+
+		case 0: Yeeh_Patt[athroisma][0]=1;
+
+		}
+}
+
+if(arrays==0)
+{
+Yeeh_Patt[athroisma][1]=Yeeh_Patt[athroisma][2]+1;
+
+        switch(metavliti)
+		{
+
+		case 3: Yeeh_Patt[athroisma][0]=2;
+
+		case 2: Yeeh_Patt[athroisma][0]=1;
+
+		case 1: Yeeh_Patt[athroisma][0]=0;
+
+		case 0: Yeeh_Patt[athroisma][0]=0;
+        }
+
+}
+}
+
+
+int Arrayelegxos(char,char);
 
 int Arrayelegxos(char a[],char b[])
 	{
@@ -40,6 +127,7 @@ int main()
 {
 	
 	int i;
+	int r = 0;
 	int counter=0;
 	int counterL=0;
 	char c;
@@ -57,6 +145,8 @@ int main()
 	int array13=0;
 	FILE *input_file;
 	FILE *output_file;
+	FILE *correlated_file;
+	FILE *predictors;
 	int flag=0;
 	int counterouter=0;
 	int innercounter=0;
@@ -71,9 +161,14 @@ int main()
 	int correlatedT=1;
 	int correlatedNT=1;
 	int correlatedpredictorT_hit=0;
+	int correlatedpredictorT_miss=0;
 	int correlatedpredictorNT_hit=0;
+	int correlatedpredictorNT_miss=0;
 	input_file=fopen("input.txt","r");
-	output_file=fopen("exodos.txt","w");
+	output_file=fopen("OneAndTwoBit.txt","w");
+	correlated_file=fopen("correlated.txt","w");
+	yeehpatt_predictor=fopen("yeeh_patt.txt","w");
+	predictors=fopen("Predictors.txt","w");
 
 	
 	
@@ -157,25 +252,25 @@ int main()
 			}
 
 
-			fprintf(output_file,"Action Not Taken\n");
+			fprintf(correlated_file,"Action Not Taken\n");
 			if (correlatedT==1){
-			fprintf(output_file,"Predictor Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Not Taken\n");
 			}
 
 				if (correlatedNT==1){
-			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			fprintf(correlated_file,"Predictor Not Taken: Not Taken\n\n\n");
 			}
 
 
 			
 			if (correlated_change==1){
-				if (correlatedT==1){/////Miss
+				if (correlatedT==1){correlatedpredictorT_miss++;/////Miss
 				correlatedT=0;
 				correlated_change=0;
 				}
@@ -184,7 +279,7 @@ int main()
 					correlated_change=0;
 				}
 			}else if (correlated_change==0){
-				if (correlatedNT==1){/////Miss
+				if (correlatedNT==1){correlatedpredictorNT_miss++;/////Miss
 				correlatedNT=0;
 				correlated_change=0;
 				}
@@ -194,6 +289,18 @@ int main()
 				}
 			
 			}
+
+
+                yeh_pattt(array12);
+
+				
+		        r=0;	
+                while(r<5) 
+                {
+                     number[r]=number[r+1];
+	                 r++;
+                }
+                number[4]=array12;
 
 
 			//printf("Not Taken\n");
@@ -230,23 +337,23 @@ int main()
 			}
 			
 
-			fprintf(output_file,"\nAction Taken\n");
+			fprintf(correlated_file,"\nAction Taken\n");
 			if (correlatedT==1){
-			fprintf(output_file,"Predictor Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Not Taken\n");
 			}
 
 				if (correlatedNT==1){
-			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			fprintf(correlated_file,"Predictor Not Taken: Not Taken\n\n\n");
 			}
 
 				if (correlated_change==1){
-				if (correlatedT==0){/////Miss
+				if (correlatedT==0){correlatedpredictorT_miss++;/////Miss
 				correlatedT=0;
 				correlated_change=1;
 				}
@@ -255,7 +362,7 @@ int main()
 					correlated_change=1;
 				}
 			}else if (correlated_change==0){
-				if (correlatedNT==0){/////Miss
+				if (correlatedNT==0){correlatedpredictorNT_miss++;/////Miss
 				correlatedNT=0;
 				correlated_change=1;
 				}
@@ -269,6 +376,20 @@ int main()
 
 			//printf("Taken\n");
 			counterouter++;
+
+			yeh_pattt(array12);
+
+
+			
+		        r=0;	
+                while(r<5) 
+                {
+                     number[r]=number[r+1];
+	                 r++;
+                }
+                number[4]=array12;/////////////////////////////////////////////////////////////////////////////////////
+
+
 			}
 
 			
@@ -312,25 +433,25 @@ int main()
 			}
 
 
-			fprintf(output_file,"\nAction Taken\n");
+			fprintf(correlated_file,"\nAction Taken\n");
 			if (correlatedT==1){
-			fprintf(output_file,"Predictor Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Not Taken\n");
 			}
 
 				if (correlatedNT==1){
-			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			fprintf(correlated_file,"Predictor Not Taken: Not Taken\n\n\n");
 			}
 
 
 
 			if (correlated_change==1){
-				if (correlatedT==0){/////Miss
+				if (correlatedT==0){correlatedpredictorT_miss++;/////Miss
 				correlatedT=0;
 				correlated_change=1;
 				}
@@ -339,7 +460,7 @@ int main()
 					correlated_change=1;
 				}
 			}else if (correlated_change==0){
-				if (correlatedNT==0){/////Miss
+				if (correlatedNT==0){correlatedpredictorNT_miss++;/////Miss
 				correlatedNT=0;
 				correlated_change=1;
 				}
@@ -356,6 +477,19 @@ int main()
 		    counterouter++;
 		    
 			elegxos=2;
+
+
+			yeh_pattt(array13);
+
+			
+		        r=0;	
+                while(r<5) 
+                {
+                     number[r]=number[r+1];
+	                 r++;
+                }
+                number[4]=array13;////////////////////////////////////////////////////////////////////////////////////
+
 		}
 		else if (array23==1)
 		{
@@ -387,24 +521,24 @@ int main()
 
 
 
-			fprintf(output_file,"\nAction Taken\n");
+			fprintf(correlated_file,"\nAction Taken\n");
 			if (correlatedT==1){
-			fprintf(output_file,"Predictor Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Not Taken\n");
 			}
 
 				if (correlatedNT==1){
-			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Not Taken: Not Taken\n\n\n");
+			fprintf(correlated_file,"Predictor Not Taken: Not Taken\n\n\n");
 			}
 
 
 			if (correlated_change==1){
-				if (correlatedT==0){/////Miss
+				if (correlatedT==0){correlatedpredictorT_miss++;/////Miss
 				correlatedT=0;
 				correlated_change=1;
 				}
@@ -413,7 +547,7 @@ int main()
 					correlated_change=1;
 				}
 			}else if (correlated_change==0){
-				if (correlatedNT==0){/////Miss
+				if (correlatedNT==0){correlatedpredictorNT_miss++;/////Miss
 				correlatedNT=0;
 				correlated_change=1;
 				}
@@ -428,6 +562,18 @@ int main()
 			//printf("Taken\n");
 			elegxos=2;
 			innercounter++;
+
+
+			yeh_pattt(array23);
+
+			
+		        r=0;	
+                while(r<5) 
+                {
+                     number[r]=number[r+1];
+	                 r++;
+                }
+                number[4]=array23;/////////////////////////////////////////////////////////////////////////////////
 		}
 		else
 		{
@@ -467,26 +613,26 @@ int main()
 			}
 
 
-			fprintf(output_file,"\nAction Not Taken\n");
+			fprintf(correlated_file,"\nAction Not Taken\n");
 			if (correlatedT==1){
-			fprintf(output_file,"Predictor Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Taken: Not Taken\n");
 			}
 
 				if (correlatedNT==1){
-			fprintf(output_file,"Predictor Not Taken: Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Taken\n");
 			} 
 			else {
-			fprintf(output_file,"Predictor Not Taken: Not Taken\n");
+			fprintf(correlated_file,"Predictor Not Taken: Not Taken\n");
 			}
 
 
 
 
 				if (correlated_change==1){
-				if (correlatedT==1){/////Miss
+				if (correlatedT==1){correlatedpredictorT_miss++;/////Miss
 				correlatedT=0;
 				correlated_change=0;
 				}
@@ -495,7 +641,7 @@ int main()
 					correlated_change=0;
 				}
 			}else if (correlated_change==0){
-				if (correlatedNT==1){/////Miss
+				if (correlatedNT==1){correlatedpredictorNT_miss++;/////Miss
 				correlatedNT=0;
 				correlated_change=0;
 				}
@@ -538,17 +684,20 @@ int main()
 	printf("Predictor Not Taken Hits: %d\n",correlatedpredictorNT_hit);
 	printf("Correlated Predictor Hits: %d\n",correlatedpredictorNT_hit+correlatedpredictorT_hit);
 
-
-
-
-
-	fprintf(output_file,"\ncorrectness of 1-bit predictor = %d/%d\n",hit,miss+hit);
+	fprintf(output_file,"correctness of 1-bit predictor = %d/%d\n",hit,miss+hit);
 	fprintf(output_file,"\ncorrectness of 2-bit predictor = %d/%d\n",hit2bit,miss2bit+hit2bit);
 	fprintf(output_file,"\nNumber of loops:%d\n",counterouter+innercounter); 
-	fprintf(output_file,"\nPredictor Taken Hits: %d\n",correlatedpredictorT_hit);
-	fprintf(output_file,"Predictor Not Taken Hits: %d\n",correlatedpredictorNT_hit);
-	fprintf(output_file,"Correlated Predictor Hits: %d\n",correlatedpredictorNT_hit+correlatedpredictorT_hit);
-	
+	fprintf(correlated_file,"\ncorrectness of Taken Predictor: %d/%d\n",correlatedpredictorT_hit,correlatedpredictorT_hit+correlatedpredictorT_miss);
+	fprintf(correlated_file,"correctness of  Not Taken Predictor: %d/%d\n",correlatedpredictorNT_hit,correlatedpredictorNT_hit+correlatedpredictorNT_miss);
+	//fprintf(correlated_file,"Correlated Predictor Hits: %d\n",correlatedpredictorNT_hit+correlatedpredictorT_hit);
+	Print_YeehPatt();
+
+	fprintf(predictors,"1/2 bit predictors\n");
+	fprintf(predictors,"correctness of 1-bit predictor = %d/%d\n",hit,miss+hit);
+	fprintf(predictors,"correctness of 2-bit predictor = %d/%d\n",hit2bit,miss2bit+hit2bit);
+	fprintf(predictors,"\nCorrelated");
+	fprintf(predictors,"\ncorrectness of Taken Predictor: %d/%d\n",correlatedpredictorT_hit,correlatedpredictorT_hit+correlatedpredictorT_miss);
+	fprintf(predictors,"correctness of  Not Taken Predictor: %d/%d\n",correlatedpredictorNT_hit,correlatedpredictorNT_hit+correlatedpredictorNT_miss);
 
 	
 		fclose(input_file);

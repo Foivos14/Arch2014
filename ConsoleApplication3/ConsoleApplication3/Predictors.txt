@@ -1,0 +1,7 @@
+1/2 bit predictors
+correctness of 1-bit predictor = 6/30
+correctness of 2-bit predictor = 18/30
+
+Correlated
+correctness of Taken Predictor: 6/23
+correctness of  Not Taken Predictor: 3/7
